@@ -1,0 +1,350 @@
+#  Copyright 2016 Ecole des Mines de Saint-Etienne.
+# 
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+# 
+#       http://www.apache.org/licenses/LICENSE-2.0
+# 
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+ 
+@prefix : <https://w3id.org/stn/core/operations/http#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://w3id.org/stn/core/operations/http> .
+
+<http://w3id.org/stn/core/operations/http> rdf:type owl:Ontology , foaf:Document ;
+                                           
+                                           rdfs:label "STN-Operations-HTTP"@en ;
+                                           
+                                           rdfs:comment """Socio-technical networks (STNs) are networks of people and social things (i.e. autonomous physical or virtual objects). An STN mirrors the physical world by creating digital counterparts of physical and abstract entities and relating them to one another. In the same time, applications running in the digital world may reflect back into the physical world (e.g. through actuators).
+
+An STN encodes the different relations among people and smart things, such as friendship, ownership, provenance or colocation. An STN may not exist outside of the minds of its members, however, in most cases, an STN is reified within an STN platform.
+
+STN-Operations-HTTP provides the concepts and properties required for performin STN operations as HTTP requests and extracting RDF data from HTTP responses."""@en ;
+                                           
+                                           owl:imports <https://w3id.org/stn/core/operations> ,
+                                                       <http://www.w3.org/2011/http> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://w3id.org/stn/core/operations/http#baseURL
+
+:baseURL rdf:type owl:AnnotationProperty ;
+         
+         rdfs:domain <https://w3id.org/stn/core#Platform> .
+
+
+
+###  http://w3id.org/stn/core/operations/http#implementedAs
+
+:implementedAs rdf:type owl:AnnotationProperty .
+
+
+
+###  http://w3id.org/stn/core/operations/http#paramName
+
+:paramName rdf:type owl:AnnotationProperty ;
+           
+           rdfs:domain <http://www.w3.org/2011/http#Parameter> .
+
+
+
+###  http://w3id.org/stn/core/operations/http#supportsAuth
+
+:supportsAuth rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://w3id.org/stn/core/operations/http#implementedAs
+
+:implementedAs rdf:type owl:ObjectProperty ;
+               
+               rdfs:domain <https://w3id.org/stn/core/operations#Operation> ;
+               
+               rdfs:range :STNRequest .
+
+
+
+###  http://w3id.org/stn/core/operations/http#supportsAuth
+
+:supportsAuth rdf:type owl:ObjectProperty ;
+              
+              rdfs:domain <https://w3id.org/stn/core#Platform> ;
+              
+              rdfs:range :AuthProtocol .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://w3id.org/stn/core/operations/http#STNTerm
+
+:STNTerm rdf:type owl:DatatypeProperty ;
+         
+         rdfs:label "STN Term"@en .
+
+
+
+###  http://w3id.org/stn/core/operations/http#baseURL
+
+:baseURL rdf:type owl:DatatypeProperty ,
+                  owl:FunctionalProperty ;
+         
+         rdfs:range xsd:anyURI .
+
+
+
+###  http://w3id.org/stn/core/operations/http#key
+
+:key rdf:type owl:DatatypeProperty ;
+     
+     rdfs:label "key"@en .
+
+
+
+###  http://w3id.org/stn/core/operations/http#paramName
+
+:paramName rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty ;
+           
+           rdfs:range xsd:string .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  https://w3id.org/stn/core/operations#Implementation
+
+<https://w3id.org/stn/core/operations#Implementation> rdf:type owl:Class .
+
+
+
+###  http://w3id.org/stn/core/operations/http#AuthProtocol
+
+:AuthProtocol rdf:type owl:Class ;
+              
+              rdfs:label "Authentication Protocol"@en ;
+              
+              rdfs:comment "Defines the authentication/authorization frameworks used for accessing the HTTP services of an STN platform."@en .
+
+
+
+###  http://w3id.org/stn/core/operations/http#AuthSTNRequest
+
+:AuthSTNRequest rdf:type owl:Class ;
+                
+                rdfs:subClassOf :STNRequest ;
+                
+                rdfs:comment "Authenticated STN Request"@en .
+
+
+
+###  http://w3id.org/stn/core/operations/http#JSONRepresentation
+
+:JSONRepresentation rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf <https://w3id.org/stn/core/operations#Representation> .
+
+
+
+###  http://w3id.org/stn/core/operations/http#Mapping
+
+:Mapping rdf:type owl:Class ;
+         
+         rdfs:label "Mapping"@en .
+
+
+
+###  http://w3id.org/stn/core/operations/http#ParamLocation
+
+:ParamLocation rdf:type owl:Class ;
+               
+               rdfs:label "Parameter location"@en ;
+               
+               rdfs:comment "Refers to the location of a parameter in a HTTP request, such as a path, query or body parameter."@en .
+
+
+
+###  http://w3id.org/stn/core/operations/http#STNRequest
+
+:STNRequest rdf:type owl:Class ;
+            
+            rdfs:subClassOf <https://w3id.org/stn/core/operations#Implementation> ,
+                            <http://www.w3.org/2011/http#Request> ;
+            
+            rdfs:comment "unstable"@en .
+
+
+
+###  http://w3id.org/stn/core/operations/http#TurtleRepresentation
+
+:TurtleRepresentation rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf <https://w3id.org/stn/core/operations#Representation> .
+
+
+
+###  http://www.w3.org/2011/http#Request
+
+<http://www.w3.org/2011/http#Request> rdf:type owl:Class .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://w3id.org/stn/core/operations/http#Body
+
+:Body rdf:type :ParamLocation ,
+               owl:NamedIndividual ;
+      
+      rdfs:label "Body"@en .
+
+
+
+###  http://w3id.org/stn/core/operations/http#JSON
+
+:JSON rdf:type <https://w3id.org/stn/core/operations#RepresentationFormat> ,
+               owl:NamedIndividual ;
+      
+      rdfs:label "JSON"@en .
+
+
+
+###  http://w3id.org/stn/core/operations/http#OAuth2
+
+:OAuth2 rdf:type :AuthProtocol ,
+                 owl:NamedIndividual ;
+        
+        rdfs:label "OAuth 2.0"@en .
+
+
+
+###  http://w3id.org/stn/core/operations/http#OpenIDConnect
+
+:OpenIDConnect rdf:type :AuthProtocol ,
+                        owl:NamedIndividual ;
+               
+               rdfs:label "OpenID Connect"@en .
+
+
+
+###  http://w3id.org/stn/core/operations/http#Path
+
+:Path rdf:type :ParamLocation ,
+               owl:NamedIndividual ;
+      
+      rdfs:label "Path"@en .
+
+
+
+###  http://w3id.org/stn/core/operations/http#Query
+
+:Query rdf:type :ParamLocation ,
+                owl:NamedIndividual ;
+       
+       rdfs:label "Query"@en .
+
+
+
+###  http://w3id.org/stn/core/operations/http#Turtle
+
+:Turtle rdf:type <https://w3id.org/stn/core/operations#RepresentationFormat> ,
+                 owl:NamedIndividual ;
+        
+        rdfs:label "Turtle"@en .
+
+
+
+###  http://w3id.org/stn/core/operations/http#WebID
+
+:WebID rdf:type :AuthProtocol ,
+                owl:NamedIndividual ;
+       
+       rdfs:label "WebID"@en .
+
+
+
+
+
+#################################################################
+#
+#    Annotations
+#
+#################################################################
+
+
+:baseURL rdfs:label "base URL"@en ;
+         
+         rdfs:comment "The base URL for the HTTP services provided by this STN platform."@en .
+
+
+
+:paramName rdfs:label "parameter name"@en ;
+           
+           owl:deprecated "true"^^xsd:boolean ;
+           
+           rdfs:comment "A sequence of characters used to identify the parameter of a request within the scope of an STN platform. For instance, when creating a connection, the required UserID parameter might be referred to as \"user_id\" in one platform and \"id\" in another."@en .
+
+
+
+:implementedAs rdfs:label "implemented as"@en ;
+               
+               owl:deprecated "true"^^xsd:boolean ;
+               
+               rdfs:comment "An STN HTTP request that implements this operation."@en .
+
+
+
+:supportsAuth rdfs:label "supports authentication"@en ;
+              
+              rdfs:comment "An authN/Z protocol supported by this STN platform."@en .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+

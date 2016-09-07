@@ -1,0 +1,1217 @@
+#  Copyright 2016 Ecole des Mines de Saint-Etienne.
+# 
+#  Licensed under the Apache License, Version 2.0 (the "License");
+#  you may not use this file except in compliance with the License.
+#  You may obtain a copy of the License at
+# 
+#       http://www.apache.org/licenses/LICENSE-2.0
+# 
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  See the License for the specific language governing permissions and
+#  limitations under the License.
+ 
+@prefix : <https://w3id.org/stn/core/operations#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://w3id.org/stn/core/operations> .
+
+<https://w3id.org/stn/core/operations> rdf:type owl:Ontology , foaf:Document ;
+                                       
+                                       rdfs:label "STN-Operations"@en ;
+                                       
+                                       rdfs:comment """Socio-technical networks (STNs) are networks of people and social things (i.e. autonomous physical or virtual objects). An STN mirrors the physical world by creating digital counterparts of physical and abstract entities and relating them to one another. In the same time, applications running in the digital world may reflect back into the physical world (e.g. through actuators).
+
+An STN encodes the different relations among people and smart things, such as friendship, ownership, provenance or colocation. An STN may not exist outside of the minds of its members, however, in most cases, an STN is reified within an STN platform.
+
+STN-Operations defines the set of generic operations and parameters that allow agents to participate in any STN platform compatible with STN-Core."""@en ;
+                                       
+                                       owl:imports <https://w3id.org/stn/core> .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  https://w3id.org/stn/core/operations#consumes
+
+:consumes rdf:type owl:ObjectProperty ;
+          
+          rdfs:domain <https://w3id.org/stn/core#Platform> ;
+          
+          rdfs:range :RepresentationFormat .
+
+
+
+###  https://w3id.org/stn/core/operations#contains
+
+:contains rdf:type owl:ObjectProperty ;
+          
+          rdfs:range :KeyValuePair ;
+          
+          rdfs:domain :Representation .
+
+
+
+###  https://w3id.org/stn/core/operations#hasClass
+
+:hasClass rdf:type owl:ObjectProperty ;
+          
+          rdfs:domain <https://w3id.org/stn/core#SmartThing> ;
+          
+          rdfs:range :SocialThingClass .
+
+
+
+###  https://w3id.org/stn/core/operations#hasFormat
+
+:hasFormat rdf:type owl:ObjectProperty ;
+           
+           rdfs:domain :Representation ;
+           
+           rdfs:range :RepresentationFormat .
+
+
+
+###  https://w3id.org/stn/core/operations#hasInput
+
+:hasInput rdf:type owl:ObjectProperty ;
+          
+          rdfs:label "has input"@en ;
+          
+          rdfs:comment "An input parameter for this operation."@en ;
+          
+          rdfs:domain :Operation ;
+          
+          rdfs:range :Parameter .
+
+
+
+###  https://w3id.org/stn/core/operations#hasOutput
+
+:hasOutput rdf:type owl:ObjectProperty ;
+           
+           rdfs:label "has output"@en ;
+           
+           rdfs:comment "A parameter returned by this operation."@en ;
+           
+           rdfs:domain :Operation ;
+           
+           rdfs:range :Parameter .
+
+
+
+###  https://w3id.org/stn/core/operations#hasOutputCollectionOf
+
+:hasOutputCollectionOf rdf:type owl:ObjectProperty .
+
+
+
+###  https://w3id.org/stn/core/operations#hasRepresentation
+
+:hasRepresentation rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:label "has representation"@en ;
+                   
+                   rdfs:domain <https://w3id.org/stn/core#DigitalCounterpart> ;
+                   
+                   rdfs:range :Representation .
+
+
+
+###  https://w3id.org/stn/core/operations#hasRequiredInput
+
+:hasRequiredInput rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "has required input"@en .
+
+
+
+###  https://w3id.org/stn/core/operations#implementedAs
+
+:implementedAs rdf:type owl:ObjectProperty ;
+               
+               rdfs:label "implemented as"@en ;
+               
+               rdfs:comment "An implementation of this operation."@en ;
+               
+               rdfs:range :Implementation ;
+               
+               rdfs:domain :Operation .
+
+
+
+###  https://w3id.org/stn/core/operations#key
+
+:key rdf:type owl:ObjectProperty ;
+     
+     rdfs:domain :KeyValuePair .
+
+
+
+###  https://w3id.org/stn/core/operations#performed
+
+:performed rdf:type owl:InverseFunctionalProperty ,
+                    owl:ObjectProperty ;
+           
+           rdfs:label "performed"@en ;
+           
+           rdfs:comment "An operation that has been performed by this user."@en ;
+           
+           rdfs:domain <https://w3id.org/stn/core#Agent> ;
+           
+           rdfs:range :Operation ;
+           
+           owl:inverseOf :performedBy .
+
+
+
+###  https://w3id.org/stn/core/operations#performedBy
+
+:performedBy rdf:type owl:FunctionalProperty ,
+                      owl:ObjectProperty ;
+             
+             rdfs:label "performedBy"@en ;
+             
+             rdfs:comment "The user performing this operation."@en ;
+             
+             rdfs:range <https://w3id.org/stn/core#Agent> ;
+             
+             rdfs:domain :Operation .
+
+
+
+###  https://w3id.org/stn/core/operations#produces
+
+:produces rdf:type owl:ObjectProperty ;
+          
+          rdfs:domain <https://w3id.org/stn/core#Platform> ;
+          
+          rdfs:range :RepresentationFormat .
+
+
+
+###  https://w3id.org/stn/core/operations#representationOf
+
+:representationOf rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "representation of"@en ;
+                  
+                  owl:inverseOf :hasRepresentation .
+
+
+
+###  https://w3id.org/stn/core/operations#supports
+
+:supports rdf:type owl:ObjectProperty ;
+          
+          rdfs:domain <https://w3id.org/stn/core#Platform> ;
+          
+          rdfs:range :Operation .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  https://w3id.org/stn/core/operations#paramName
+
+:paramName rdf:type owl:DatatypeProperty ,
+                    owl:FunctionalProperty ;
+           
+           rdfs:label "Parameter Name"@en ;
+           
+           owl:deprecated "true"^^xsd:boolean ;
+           
+           rdfs:comment "A sequence of characters used to identify a parameter of an operation within the scope of an STN platform. For instance, when creating a connection, the required UserID parameter might be referred to as \"user_id\" in one platform and \"id\" in another."@en ;
+           
+           rdfs:range xsd:string ;
+           
+           rdfs:domain :KeyValuePair .
+
+
+
+###  https://w3id.org/stn/core/operations#required
+
+:required rdf:type owl:DatatypeProperty ;
+          
+          rdfs:range xsd:boolean ;
+          
+          rdfs:domain :Parameter .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  https://w3id.org/stn/core/operations#AcceptConnection
+
+:AcceptConnection rdf:type owl:Class ;
+                  
+                  rdfs:label "Accept Connection"@en ;
+                  
+                  rdfs:subClassOf :ConnectionAction ;
+                  
+                  rdfs:comment "A kind of action an agent may perform in order to accept a connection from another entity. Required parameters: EntityID."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#Action
+
+:Action rdf:type owl:Class ;
+        
+        rdfs:label "Action"@en ;
+        
+        rdfs:subClassOf :Operation ;
+        
+        owl:disjointWith :Query ;
+        
+        rdfs:comment "An action is an operation that affects the STG and thus defines a transition from one state of an STN to another. For instance, creating a connection to another agent would have the effect of adding an edge (labeled stn:connectedTo) to the STG."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#AddOwner
+
+:AddOwner rdf:type owl:Class ;
+          
+          rdfs:label "Add Owner"@en ;
+          
+          rdfs:subClassOf :CreateConnection ;
+          
+          owl:disjointWith :AddPossession ;
+          
+          rdfs:comment "A kind of action a smart thing may perform in order to add an agent as its owner. This might be a delayed action. Required parameters: OwnerID."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#AddPossession
+
+:AddPossession rdf:type owl:Class ;
+               
+               rdfs:label "Add Possession"@en ;
+               
+               rdfs:subClassOf :CreateConnection ;
+               
+               rdfs:comment "A kind of action an agent may perform in order to add a smart thing as a possession. This might be a delayed action. Required parameters: UserID."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#CheckIn
+
+:CheckIn rdf:type owl:Class ;
+         
+         rdfs:label "Check In"@en ;
+         
+         rdfs:subClassOf :SpatialAction ;
+         
+         owl:disjointWith :CheckOut ;
+         
+         rdfs:comment "A kind of action an agent may perform in order to be located at a given spatial thing. Required parameters: SpatialThingID."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#CheckOut
+
+:CheckOut rdf:type owl:Class ;
+          
+          rdfs:label "Check Out"@en ;
+          
+          rdfs:subClassOf :SpatialAction ;
+          
+          rdfs:comment "A kind of action an agent may perform in order to stop being located at a given spatial thing. Required parameters: SpatialThingID."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#CommunicationAction
+
+:CommunicationAction rdf:type owl:Class ;
+                     
+                     rdfs:label "Communication Action"@en ;
+                     
+                     rdfs:subClassOf :Action ;
+                     
+                     rdfs:comment "unstable"@en .
+
+
+
+###  https://w3id.org/stn/core/operations#ConnectionAction
+
+:ConnectionAction rdf:type owl:Class ;
+                  
+                  rdfs:label "Connection Action"@en ;
+                  
+                  rdfs:subClassOf :Action ;
+                  
+                  rdfs:comment "The class of all actions that affect connections among agents, user accounts and/or groups in an STN."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#CreateConnection
+
+:CreateConnection rdf:type owl:Class ;
+                  
+                  rdfs:label "Create Connection"@en ;
+                  
+                  rdfs:subClassOf :ConnectionAction ;
+                  
+                  rdfs:comment "A kind of action an agent may perform in order to establish a connection to another agent. This action might require the consent of the targeted agent, in which case it is a delayed action. Required parameters: UserID."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#CreateConnectionRequest
+
+:CreateConnectionRequest rdf:type owl:Class ;
+                         
+                         rdfs:label "Create Connection Request"@en ;
+                         
+                         rdfs:subClassOf :ConnectionAction ,
+                                         :DelayedAction ;
+                         
+                         owl:deprecated "true"^^xsd:boolean ;
+                         
+                         rdfs:comment "A kind of action an agent may perform in order to establish a connection to another entity with the consent of that entity."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#CreateGroup
+
+:CreateGroup rdf:type owl:Class ;
+             
+             rdfs:label "Create Group"@en ;
+             
+             rdfs:subClassOf :GroupAction ;
+             
+             rdfs:comment "A kind of action an agent may perform in order to create a group digital artifact."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#CreateMessage
+
+:CreateMessage rdf:type owl:Class ;
+               
+               rdfs:label "Create Message"@en ;
+               
+               rdfs:subClassOf :MessageAction .
+
+
+
+###  https://w3id.org/stn/core/operations#CreatePlace
+
+:CreatePlace rdf:type owl:Class ;
+             
+             rdfs:label "Create Place"@en ;
+             
+             rdfs:subClassOf :SpatialAction ;
+             
+             owl:deprecated "true"^^xsd:boolean .
+
+
+
+###  https://w3id.org/stn/core/operations#CreateUserAccount
+
+:CreateUserAccount rdf:type owl:Class ;
+                   
+                   rdfs:label "Create User Account"@en ;
+                   
+                   rdfs:subClassOf :UserAccountAction ;
+                   
+                   rdfs:comment "A kind of action a smart thing may perform in order to create a user account digital artifact. Required parameters: OwnerID, DisplayedName."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#DataAction
+
+:DataAction rdf:type owl:Class ;
+            
+            rdfs:label "Data Action"@en ;
+            
+            rdfs:subClassOf :CommunicationAction .
+
+
+
+###  https://w3id.org/stn/core/operations#DelayedAction
+
+:DelayedAction rdf:type owl:Class ;
+               
+               rdfs:label "Delayed Action"@en ;
+               
+               rdfs:subClassOf :Action ;
+               
+               rdfs:comment """unstable
+
+A delayed action is an action which does not have an immediate effect and requires further steps to be taken (e.g. the approval of an agent, further processing by the STN platform). For instance, establishing a connection that requires the targeted agent's consent is a delayed action."""@en .
+
+
+
+###  https://w3id.org/stn/core/operations#DeleteConnectionFrom
+
+:DeleteConnectionFrom rdf:type owl:Class ;
+                      
+                      rdfs:label "Delete Connection From"@en ;
+                      
+                      rdfs:subClassOf :ConnectionAction ;
+                      
+                      rdfs:comment """unstable
+
+A kind of action an agent may perform in order to delete a connection from an entity. This might be a delayed action. Required parameters: UserID."""@en .
+
+
+
+###  https://w3id.org/stn/core/operations#DeleteConnectionFromRequest
+
+:DeleteConnectionFromRequest rdf:type owl:Class ;
+                             
+                             rdfs:label "Delete Connection From Request"@en ;
+                             
+                             rdfs:subClassOf :ConnectionAction ,
+                                             :DelayedAction ;
+                             
+                             owl:deprecated "true"^^xsd:boolean ;
+                             
+                             rdfs:comment """unstable
+
+A delayed action an agent may perform in order to delete a connection from another entity with the consent of that entity."""@en .
+
+
+
+###  https://w3id.org/stn/core/operations#DeleteConnectionTo
+
+:DeleteConnectionTo rdf:type owl:Class ;
+                    
+                    rdfs:label "Delete Connection To"@en ;
+                    
+                    rdfs:subClassOf :ConnectionAction ;
+                    
+                    rdfs:comment """unstable
+
+A kind of action an agent may perform in order to delete a connection to an entity. This might be a delayed action. Required parameters: UserID."""@en .
+
+
+
+###  https://w3id.org/stn/core/operations#DeleteConnectionToRequest
+
+:DeleteConnectionToRequest rdf:type owl:Class ;
+                           
+                           rdfs:label "Delete Connection To Request"@en ;
+                           
+                           rdfs:subClassOf :ConnectionAction ,
+                                           :DelayedAction ;
+                           
+                           owl:deprecated "true"^^xsd:boolean ;
+                           
+                           rdfs:comment """unstable
+
+A delayed action an agent may perform in order to delete a connection to another entity with the consent of that entity."""@en .
+
+
+
+###  https://w3id.org/stn/core/operations#DeleteGroup
+
+:DeleteGroup rdf:type owl:Class ;
+             
+             rdfs:label "Delete Group"@en ;
+             
+             rdfs:subClassOf :GroupAction ;
+             
+             rdfs:comment "A kind of action an agent may perform in order to delete a group digital artifact. Required parameters: GroupID."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#DeleteMessage
+
+:DeleteMessage rdf:type owl:Class ;
+               
+               rdfs:label "Delete Message"@en ;
+               
+               rdfs:subClassOf :MessageAction .
+
+
+
+###  https://w3id.org/stn/core/operations#DeletePlace
+
+:DeletePlace rdf:type owl:Class ;
+             
+             rdfs:label "Delete Place"@en ;
+             
+             rdfs:subClassOf :SpatialAction ;
+             
+             owl:deprecated "true"^^xsd:boolean .
+
+
+
+###  https://w3id.org/stn/core/operations#DeleteUserAccount
+
+:DeleteUserAccount rdf:type owl:Class ;
+                   
+                   rdfs:label "Delete User Account"@en ;
+                   
+                   rdfs:subClassOf :UserAccountAction ;
+                   
+                   rdfs:comment "A kind of action an agent may perform in order to delete a user account digital artifact."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#Description
+
+:Description rdf:type owl:Class ;
+             
+             rdfs:label "Description"@en ;
+             
+             rdfs:subClassOf :KeyValuePair ;
+             
+             rdfs:comment "A parameter which represents a general purpose description of an entity."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#DisplayedName
+
+:DisplayedName rdf:type owl:Class ;
+               
+               rdfs:label "Displayed Name"@en ;
+               
+               rdfs:subClassOf :KeyValuePair ;
+               
+               rdfs:comment "A parameter which represents the name displayed in an STN for an entity."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#EnactRole
+
+:EnactRole rdf:type owl:Class ;
+           
+           rdfs:label "Enact Role"@en ;
+           
+           rdfs:subClassOf :RoleAction ;
+           
+           owl:disjointWith :LeaveRole ;
+           
+           owl:deprecated "true"^^xsd:boolean .
+
+
+
+###  https://w3id.org/stn/core/operations#EntityID
+
+:EntityID rdf:type owl:Class ;
+          
+          rdfs:label "Entity ID"@en ;
+          
+          rdfs:subClassOf :KeyValuePair ;
+          
+          rdfs:comment "A parameter which represents the ID of an entity."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#GetAggregatedFeed
+
+:GetAggregatedFeed rdf:type owl:Class ;
+                   
+                   rdfs:label "Get Aggregated Feed"@en ;
+                   
+                   rdfs:subClassOf :GetFeed .
+
+
+
+###  https://w3id.org/stn/core/operations#GetConnections
+
+:GetConnections rdf:type owl:Class ;
+                
+                rdfs:label "Get Connections"@en ;
+                
+                rdfs:subClassOf :Query .
+
+
+
+###  https://w3id.org/stn/core/operations#GetConnectionsFrom
+
+:GetConnectionsFrom rdf:type owl:Class ;
+                    
+                    rdfs:label "Get Connections From"@en ;
+                    
+                    rdfs:subClassOf :GetUserConnections .
+
+
+
+###  https://w3id.org/stn/core/operations#GetConnectionsTo
+
+:GetConnectionsTo rdf:type owl:Class ;
+                  
+                  rdfs:label "Get Connections To"@en ;
+                  
+                  rdfs:subClassOf :GetUserConnections .
+
+
+
+###  https://w3id.org/stn/core/operations#GetDescription
+
+:GetDescription rdf:type owl:Class ;
+                
+                rdfs:label "Get Description"@en ;
+                
+                rdfs:subClassOf :Query ;
+                
+                owl:disjointWith :GetUserConnections ;
+                
+                rdfs:comment "A kind of query an agent may perform in order to retrieve the description of a given entity (if available). Required parameters: EntityID."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#GetFeed
+
+:GetFeed rdf:type owl:Class ;
+         
+         rdfs:label "Get Feed"@en ;
+         
+         rdfs:subClassOf :Query .
+
+
+
+###  https://w3id.org/stn/core/operations#GetGroup
+
+:GetGroup rdf:type owl:Class ;
+          
+          rdfs:label "Get Group"@en ;
+          
+          rdfs:subClassOf :Query .
+
+
+
+###  https://w3id.org/stn/core/operations#GetGroupFeed
+
+:GetGroupFeed rdf:type owl:Class ;
+              
+              rdfs:label "Get Group Feed"@en ;
+              
+              rdfs:subClassOf :GetFeed .
+
+
+
+###  https://w3id.org/stn/core/operations#GetGroups
+
+:GetGroups rdf:type owl:Class ;
+           
+           rdfs:label "Get Groups"@en ;
+           
+           rdfs:subClassOf :Query .
+
+
+
+###  https://w3id.org/stn/core/operations#GetGroupsOfUser
+
+:GetGroupsOfUser rdf:type owl:Class ;
+                 
+                 rdfs:label "Get Groups Of User"@en ;
+                 
+                 rdfs:subClassOf :GetGroups .
+
+
+
+###  https://w3id.org/stn/core/operations#GetMessages
+
+:GetMessages rdf:type owl:Class ;
+             
+             rdfs:label "Get Messages"@en ;
+             
+             rdfs:subClassOf :Query .
+
+
+
+###  https://w3id.org/stn/core/operations#GetReceivedMessages
+
+:GetReceivedMessages rdf:type owl:Class ;
+                     
+                     rdfs:label "Get Received Messages"@en ;
+                     
+                     rdfs:subClassOf :GetMessages .
+
+
+
+###  https://w3id.org/stn/core/operations#GetSentMessages
+
+:GetSentMessages rdf:type owl:Class ;
+                 
+                 rdfs:label "Get Sent Messages"@en ;
+                 
+                 rdfs:subClassOf :GetMessages .
+
+
+
+###  https://w3id.org/stn/core/operations#GetUserAccountFeed
+
+:GetUserAccountFeed rdf:type owl:Class ;
+                    
+                    rdfs:label "Get User Account Feed"@en ;
+                    
+                    rdfs:subClassOf :GetFeed .
+
+
+
+###  https://w3id.org/stn/core/operations#GetUserConnections
+
+:GetUserConnections rdf:type owl:Class ;
+                    
+                    rdfs:label "Get User Connections"@en ;
+                    
+                    rdfs:subClassOf :GetConnections ;
+                    
+                    rdfs:comment "A kind of query an agent may perform in order to retrieve the connections of a user account digital artifact. Required parameters: UserID."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#GroupAction
+
+:GroupAction rdf:type owl:Class ;
+             
+             rdfs:label "Group Action"@en ;
+             
+             rdfs:subClassOf :Action ;
+             
+             rdfs:comment "The class of all group-related actions."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#Implementation
+
+:Implementation rdf:type owl:Class ;
+                
+                rdfs:label "Implementation"@en ;
+                
+                rdfs:comment "An abstract concept describing implementations of operations. This is intended to be extended by implementation-specific modules, such as STN-Core-Operations-HTTP."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#JoinGroup
+
+:JoinGroup rdf:type owl:Class ;
+           
+           rdfs:label "Join Group"@en ;
+           
+           rdfs:subClassOf :GroupAction ;
+           
+           rdfs:comment "A kind of action an agent may perform in order to join a group digital artifact. Required parameters: GroupID."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#KeyValuePair
+
+:KeyValuePair rdf:type owl:Class ;
+              
+              rdfs:label "KeyValuePair"@en ;
+              
+              rdfs:subClassOf :Parameter ;
+              
+              owl:disjointWith :Representation ;
+              
+              rdfs:comment "A parameter represents structured data that may be provided as input to, or may be returned as output of, an operation."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#LeaveGroup
+
+:LeaveGroup rdf:type owl:Class ;
+            
+            rdfs:label "Leave Group"@en ;
+            
+            rdfs:subClassOf :GroupAction ;
+            
+            rdfs:comment "A kind of action an agent may perform in order to leave a group digital artifact. Required parameters: GroupID."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#LeaveRole
+
+:LeaveRole rdf:type owl:Class ;
+           
+           rdfs:label "Leave Role"@en ;
+           
+           rdfs:subClassOf :RoleAction ;
+           
+           owl:deprecated "true"^^xsd:boolean .
+
+
+
+###  https://w3id.org/stn/core/operations#MessageAction
+
+:MessageAction rdf:type owl:Class ;
+               
+               rdfs:label "Message Action"@en ;
+               
+               rdfs:subClassOf :CommunicationAction .
+
+
+
+###  https://w3id.org/stn/core/operations#Operation
+
+:Operation rdf:type owl:Class ;
+           
+           rdfs:label "Operation"@en ;
+           
+           rdfs:comment "An operation is an atomic activity performed by an agent within the scope of an STN platform. An operation may be related to a set of input and output parameters. Known types of operations are actions and queries."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#OwnerID
+
+:OwnerID rdf:type owl:Class ;
+         
+         rdfs:label "Owner ID"@en ;
+         
+         rdfs:subClassOf :EntityID ;
+         
+         rdfs:comment """unstable
+
+A parameter which represents the ID of a smart thing's owner, such as the ID of a person or group."""@en .
+
+
+
+###  https://w3id.org/stn/core/operations#Parameter
+
+:Parameter rdf:type owl:Class .
+
+
+
+###  https://w3id.org/stn/core/operations#PostMessage
+
+:PostMessage rdf:type owl:Class ;
+             
+             rdfs:label "Post Message"@en ;
+             
+             rdfs:subClassOf :CreateMessage ;
+             
+             rdfs:comment "Post a message to a feed."@en ,
+                          "unstable"@en .
+
+
+
+###  https://w3id.org/stn/core/operations#PostMessageToGroup
+
+:PostMessageToGroup rdf:type owl:Class ;
+                    
+                    rdfs:label "Post Message To Group"@en ;
+                    
+                    rdfs:subClassOf :PostMessage .
+
+
+
+###  https://w3id.org/stn/core/operations#Query
+
+:Query rdf:type owl:Class ;
+       
+       rdfs:label "Query"@en ;
+       
+       rdfs:subClassOf :Operation ;
+       
+       rdfs:comment "A query is an operation that only retrieves information from the STG, e.g. retrieving the connections of a user."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#RawData
+
+:RawData rdf:type owl:Class ;
+         
+         rdfs:label "Raw Data"@en ;
+         
+         rdfs:subClassOf :Parameter .
+
+
+
+###  https://w3id.org/stn/core/operations#ReadDataObject
+
+:ReadDataObject rdf:type owl:Class ;
+                
+                rdfs:label "Read Data Object"@en ;
+                
+                rdfs:subClassOf :DataAction ;
+                
+                owl:disjointWith :WriteDataObject .
+
+
+
+###  https://w3id.org/stn/core/operations#ReadKeyValuePair
+
+:ReadKeyValuePair rdf:type owl:Class ;
+                  
+                  rdfs:label "Read Key Value Pair"@en ;
+                  
+                  rdfs:subClassOf :Query .
+
+
+
+###  https://w3id.org/stn/core/operations#ReadTriple
+
+:ReadTriple rdf:type owl:Class ;
+            
+            rdfs:label "Read Triple"@en ;
+            
+            rdfs:subClassOf :Query .
+
+
+
+###  https://w3id.org/stn/core/operations#ReassignToRole
+
+:ReassignToRole rdf:type owl:Class ;
+                
+                rdfs:subClassOf :GroupAction ;
+                
+                owl:deprecated "true"^^xsd:boolean ;
+                
+                rdfs:comment "TBD (taken from Singh's ontology for commitments)" .
+
+
+
+###  https://w3id.org/stn/core/operations#RejectConnection
+
+:RejectConnection rdf:type owl:Class ;
+                  
+                  rdfs:label "Reject Connection"@en ;
+                  
+                  rdfs:subClassOf :ConnectionAction ;
+                  
+                  rdfs:comment "A kind of action an agent may perform in order to reject a connection from another entity. Required parameters: EntityID."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#Representation
+
+:Representation rdf:type owl:Class ;
+                
+                rdfs:label "Representation"@en ;
+                
+                rdfs:subClassOf :Parameter .
+
+
+
+###  https://w3id.org/stn/core/operations#RepresentationFormat
+
+:RepresentationFormat rdf:type owl:Class ;
+                      
+                      rdfs:label "Representation Format"@en .
+
+
+
+###  https://w3id.org/stn/core/operations#RoleAction
+
+:RoleAction rdf:type owl:Class ;
+            
+            rdfs:label "Role Action"@en ;
+            
+            rdfs:subClassOf :Action ;
+            
+            owl:deprecated "true"^^xsd:boolean .
+
+
+
+###  https://w3id.org/stn/core/operations#SendMessage
+
+:SendMessage rdf:type owl:Class ;
+             
+             rdfs:label "Send Message"@en ;
+             
+             rdfs:subClassOf :CreateMessage ;
+             
+             rdfs:comment "unstable"@en .
+
+
+
+###  https://w3id.org/stn/core/operations#SendMessageToGroup
+
+:SendMessageToGroup rdf:type owl:Class ;
+                    
+                    rdfs:label "Send Message to Group"@en ;
+                    
+                    rdfs:subClassOf :SendMessage .
+
+
+
+###  https://w3id.org/stn/core/operations#SharePrivateMessage
+
+:SharePrivateMessage rdf:type owl:Class ;
+                     
+                     rdfs:label "Share Private Message"@en ;
+                     
+                     rdfs:subClassOf :CreateMessage ;
+                     
+                     rdfs:comment "E.g., on Twitter, a direct message is shared, it may be deleted at any time (the recipient does not have a copy)."@en ,
+                                  "unstable"@en .
+
+
+
+###  https://w3id.org/stn/core/operations#SocialThingClass
+
+:SocialThingClass rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :KeyValuePair .
+
+
+
+###  https://w3id.org/stn/core/operations#SpatialAction
+
+:SpatialAction rdf:type owl:Class ;
+               
+               rdfs:label "Spatial Action"@en ;
+               
+               rdfs:subClassOf :Action ;
+               
+               rdfs:comment "The class of all actions related to spatial things."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#SpatialThingID
+
+:SpatialThingID rdf:type owl:Class ;
+                
+                rdfs:label "Spatial Thing ID"@en ;
+                
+                rdfs:subClassOf :EntityID ;
+                
+                rdfs:comment "A parameter which represents the ID of a spatial thing."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#UpdateGroup
+
+:UpdateGroup rdf:type owl:Class ;
+             
+             rdfs:label "Update Group"@en ;
+             
+             rdfs:subClassOf :GroupAction ;
+             
+             rdfs:comment "A kind of action an agent may perform in order to update a group digital artifact. Required parameters: GroupID."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#UpdatePlace
+
+:UpdatePlace rdf:type owl:Class ;
+             
+             rdfs:label "Update Place"@en ;
+             
+             rdfs:subClassOf :SpatialAction ;
+             
+             owl:deprecated "true"^^xsd:boolean .
+
+
+
+###  https://w3id.org/stn/core/operations#UpdateUserAccount
+
+:UpdateUserAccount rdf:type owl:Class ;
+                   
+                   rdfs:label "Update User Account"@en ;
+                   
+                   rdfs:subClassOf :UserAccountAction ;
+                   
+                   rdfs:comment "A kind of action an agent may perform in order to update a user account digital artifact."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#UserAccountAction
+
+:UserAccountAction rdf:type owl:Class ;
+                   
+                   rdfs:label "User Account Action"@en ;
+                   
+                   rdfs:subClassOf :Action ;
+                   
+                   rdfs:comment "The class of all actions related to user accounts."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#UserID
+
+:UserID rdf:type owl:Class ;
+        
+        rdfs:label "User ID"@en ;
+        
+        rdfs:subClassOf :EntityID ;
+        
+        rdfs:comment "A parameter which represents the ID of an agent or user account."@en .
+
+
+
+###  https://w3id.org/stn/core/operations#WriteDataObject
+
+:WriteDataObject rdf:type owl:Class ;
+                 
+                 rdfs:label "Write Data Object"@en ;
+                 
+                 rdfs:subClassOf :DataAction .
+
+
+
+
+
+#################################################################
+#
+#    General axioms
+#
+#################################################################
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CreateGroup
+                :DeleteGroup
+                :JoinGroup
+                :LeaveGroup
+                :UpdateGroup
+              )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CommunicationAction
+                :ConnectionAction
+                :DataAction
+                :GroupAction
+                :RoleAction
+                :SpatialAction
+                :UserAccountAction
+              )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :AcceptConnection
+                :CreateConnection
+                :DeleteConnectionFrom
+                :DeleteConnectionTo
+                :RejectConnection
+              )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Implementation
+                :Operation
+                :Parameter
+              )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :CreateUserAccount
+                :DeleteUserAccount
+                :UpdateUserAccount
+              )
+] .
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Description
+                :DisplayedName
+                :EntityID
+              )
+] .
+
+
+
+
+###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
+
