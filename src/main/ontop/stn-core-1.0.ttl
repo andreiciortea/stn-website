@@ -1,17 +1,30 @@
-#  Copyright 2016 Ecole des Mines de Saint-Etienne.
-# 
-#  Licensed under the Apache License, Version 2.0 (the "License");
-#  you may not use this file except in compliance with the License.
-#  You may obtain a copy of the License at
-# 
-#       http://www.apache.org/licenses/LICENSE-2.0
-# 
-#  Unless required by applicable law or agreed to in writing, software
-#  distributed under the License is distributed on an "AS IS" BASIS,
-#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-#  See the License for the specific language governing permissions and
-#  limitations under the License.
- 
+# Copyright 2016 Ecole des Mines de Saint-Etienne.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix cc: <http://creativecommons.org/ns#>.
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix void: <https://www.w3.org/TR/void/>.
+@prefix cc: <http://creativecommons.org/ns#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
 @prefix : <https://w3id.org/stn/core#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -20,31 +33,26 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @base <https://w3id.org/stn/core> .
 
-<https://w3id.org/stn/core> rdf:type owl:Ontology , foaf:Document ;
-                            
-                            rdfs:label "STN-Core"@en ;
-                            
-                            rdfs:comment """Socio-technical networks (STNs) are networks of people and social things (i.e. autonomous physical or virtual objects). An STN mirrors the physical world by creating digital counterparts of physical and abstract entities and relating them to one another. In the same time, applications running in the digital world may reflect back into the physical world (e.g. through actuators).
-
+<https://w3id.org/stn/core> rdf:type owl:Ontology , foaf:Document , voaf:Vocabulary;
+                            dc:title "STN-Core"@en ;
+                            dc:description """Socio-technical networks (STNs) are networks of people and social things (i.e. autonomous physical or virtual objects). An STN mirrors the physical world by creating digital counterparts of physical and abstract entities and relating them to one another. In the same time, applications running in the digital world may reflect back into the physical world (e.g. through actuators).
 An STN encodes the different relations among people and smart things, such as friendship, ownership, provenance or colocation. An STN may exist only within the minds of its members, however, in most cases, an STN is reified within an STN platform.
-
 STN-Core provides the core concepts and properties required for describing STNs. Developers may use STN-Core to describe existing STNs, but also to guide the design of new STNs.
-
 Other modules of the STN ontology are available at the following locations:
 STN-Operations: https://w3id.org/core/operations
-STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
-
-
-#################################################################
-#
-#    Object Properties
-#
-#################################################################
-
+STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en ;
+  dc:issued "2016-09-09"^^xsd:date ;
+  dc:modified "2016-09-12"^^xsd:date ;
+  dc:author [ foaf:name "Andrei Ciortea" ] ;
+  cc:license <https://creativecommons.org/licenses/by/4.0> ;
+  vann:preferredNamespacePrefix "stn" ;
+  vann:preferredNamespaceUri <https://w3id.org/stn/core#> ; 
+  owl:versionIRI <https://w3id.org/stn/core-1.0> ;
+  owl:versionInfo "v1.0" .
 
 ###  https://w3id.org/stn/core#acceptedConnectionRequest
-
-:acceptedConnectionRequest rdf:type owl:ObjectProperty ;
+:acceptedConnectionRequest rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
                            
                            rdfs:label "accepted connection request"@en ;
                            
@@ -62,11 +70,9 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
                                                      )
                                        ] .
 
-
-
 ###  https://w3id.org/stn/core#connectedTo
-
-:connectedTo rdf:type owl:ObjectProperty ;
+:connectedTo rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
              
              rdfs:label "connected to"@en ;
              
@@ -76,11 +82,9 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
              
              owl:inverseOf :connectedTo .
 
-
-
 ###  https://w3id.org/stn/core#hasMember
-
-:hasMember rdf:type owl:ObjectProperty ;
+:hasMember rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
            
            rdfs:label "has member"@en ;
            
@@ -94,11 +98,9 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
            
            owl:inverseOf :memberOf .
 
-
-
 ###  https://w3id.org/stn/core#hasReceiver
-
-:hasReceiver rdf:type owl:ObjectProperty ;
+:hasReceiver rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
              
              rdfs:label "has receiver"@en ;
              
@@ -113,13 +115,11 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
                                       )
                         ] .
 
-
-
 ###  https://w3id.org/stn/core#hasReply
-
 :hasReply rdf:type owl:AsymmetricProperty ,
                    owl:IrreflexiveProperty ,
-                   owl:ObjectProperty ;
+                   owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
           
           rdfs:label "has reply"@en ;
           
@@ -129,15 +129,12 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
           
           rdfs:domain :Message .
 
-
-
 ###  https://w3id.org/stn/core#hasSender
-
 :hasSender rdf:type owl:FunctionalProperty ,
-                    owl:ObjectProperty ;
+                    owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
            
            rdfs:label "has sender"@en ;
-           
            rdfs:comment "An agent or a user account that is the sender of this message. A message has only one sender."@en ;
            
            rdfs:domain :Message ;
@@ -148,12 +145,10 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
                                     )
                       ] .
 
-
-
 ###  https://w3id.org/stn/core#heldBy
-
 :heldBy rdf:type owl:FunctionalProperty ,
-                 owl:ObjectProperty ;
+                 owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
         
         rdfs:label "held by"@en ;
         
@@ -167,12 +162,10 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
         
         rdfs:subPropertyOf :represents .
 
-
-
 ###  https://w3id.org/stn/core#holds
-
 :holds rdf:type owl:InverseFunctionalProperty ,
-                owl:ObjectProperty ;
+                owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
        
        rdfs:label "holds"@en ;
        
@@ -184,11 +177,9 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
        
        rdfs:subPropertyOf :representedBy .
 
-
-
 ###  https://w3id.org/stn/core#hostOf
-
-:hostOf rdf:type owl:ObjectProperty ;
+:hostOf rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
         
         rdfs:label "host of"@en ;
         
@@ -202,11 +193,9 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
         
         owl:inverseOf :hostedOn .
 
-
-
 ###  https://w3id.org/stn/core#hostedOn
-
-:hostedOn rdf:type owl:ObjectProperty ;
+:hostedOn rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
           
           rdfs:label "hosted on"@en ;
           
@@ -218,11 +207,9 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
           
           rdfs:range :Platform .
 
-
-
 ###  https://w3id.org/stn/core#isReceiverOf
-
-:isReceiverOf rdf:type owl:ObjectProperty ;
+:isReceiverOf rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
               
               rdfs:label "receiver of"@en ;
               
@@ -239,13 +226,11 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
                                         )
                           ] .
 
-
-
 ###  https://w3id.org/stn/core#isReplyOf
-
 :isReplyOf rdf:type owl:AsymmetricProperty ,
                     owl:IrreflexiveProperty ,
-                    owl:ObjectProperty ;
+                    owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
            
            rdfs:label "reply of"@en ;
            
@@ -257,12 +242,10 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
            
            owl:inverseOf :hasReply .
 
-
-
 ###  https://w3id.org/stn/core#isSenderOf
-
 :isSenderOf rdf:type owl:InverseFunctionalProperty ,
-                     owl:ObjectProperty ;
+                     owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
             
             rdfs:label "sender of"@en ;
             
@@ -278,11 +261,9 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
                                       )
                         ] .
 
-
-
 ###  https://w3id.org/stn/core#locatedAt
-
-:locatedAt rdf:type owl:ObjectProperty ;
+:locatedAt rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
            
            rdfs:label "located at"@en ;
            
@@ -292,11 +273,9 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
            
            rdfs:range :SpatialEntity .
 
-
-
 ###  https://w3id.org/stn/core#locationOf
-
-:locationOf rdf:type owl:ObjectProperty ;
+:locationOf rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
             
             rdfs:label "location of"@en ;
             
@@ -308,11 +287,9 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
             
             owl:inverseOf :locatedAt .
 
-
-
 ###  https://w3id.org/stn/core#memberOf
-
-:memberOf rdf:type owl:ObjectProperty ;
+:memberOf rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
           
           rdfs:label "member of"@en ;
           
@@ -324,11 +301,9 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
           
           rdfs:range :Group .
 
-
-
 ###  https://w3id.org/stn/core#ownedBy
-
-:ownedBy rdf:type owl:ObjectProperty ;
+:ownedBy rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
          
          rdfs:label "owned by"@en ;
          
@@ -338,11 +313,9 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
          
          rdfs:subPropertyOf :connectedTo .
 
-
-
 ###  https://w3id.org/stn/core#owns
-
-:owns rdf:type owl:ObjectProperty ;
+:owns rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
       
       rdfs:label "owns"@en ;
       
@@ -354,21 +327,17 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
       
       owl:inverseOf :ownedBy .
 
-
-
 ###  https://w3id.org/stn/core#rejectedConnectionRequest
-
-:rejectedConnectionRequest rdf:type owl:ObjectProperty ;
+:rejectedConnectionRequest rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
                            
                            rdfs:label "rejected connection request"@en ;
                            
                            rdfs:comment "unstable"@en .
 
-
-
 ###  https://w3id.org/stn/core#representedBy
-
-:representedBy rdf:type owl:ObjectProperty ;
+:representedBy rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
                
                rdfs:label "represented by"@en ;
                
@@ -378,11 +347,9 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
                
                owl:inverseOf :represents .
 
-
-
 ###  https://w3id.org/stn/core#represents
-
-:represents rdf:type owl:ObjectProperty ;
+:represents rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
             
             rdfs:label "represents"@en ;
             
@@ -390,11 +357,9 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
             
             rdfs:domain :DigitalCounterpart .
 
-
-
 ###  https://w3id.org/stn/core#sentConnectionRequest
-
-:sentConnectionRequest rdf:type owl:ObjectProperty ;
+:sentConnectionRequest rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
                        
                        rdfs:label "sent connection request"@en ;
                        
@@ -413,38 +378,27 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
                                   ] .
 
 
-
-
-
 #################################################################
 #
 #    Data properties
 #
 #################################################################
 
-
 ###  https://w3id.org/stn/core#description
-
 :description rdf:type owl:DatatypeProperty ;
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
              
              rdfs:range xsd:string .
 
-
-
 ###  https://w3id.org/stn/core#id
-
-:id rdf:type owl:DatatypeProperty .
-
-
+:id rdf:type owl:DatatypeProperty ;
+ rdfs:isDefinedBy <https://w3id.org/stn/core> .
 
 ###  https://w3id.org/stn/core#name
-
 :name rdf:type owl:DatatypeProperty ;
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
       
       rdfs:range xsd:string .
-
-
-
 
 
 #################################################################
@@ -453,10 +407,9 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
 #
 #################################################################
 
-
 ###  https://w3id.org/stn/core#Agent
-
 :Agent rdf:type owl:Class ;
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
        
        rdfs:label "Agent"@en ;
        
@@ -468,32 +421,26 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
        
        rdfs:comment "An agent is an autonomous entity (most commonly a person, organization, physical object or virtual object) that interacts with other agents in the physical-digital space."@en .
 
-
-
 ###  https://w3id.org/stn/core#AggregatedFeed
-
 :AggregatedFeed rdf:type owl:Class ;
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
                 
                 rdfs:label "Aggregated Feed"@en ;
                 
                 rdfs:subClassOf :Feed .
 
-
-
 ###  https://w3id.org/stn/core#Artifact
-
 :Artifact rdf:type owl:Class ;
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
           
           rdfs:label "Artifact"@en ;
           
           owl:disjointWith :Group ,
                            :Platform .
 
-
-
 ###  https://w3id.org/stn/core#ClosedMessage
-
 :ClosedMessage rdf:type owl:Class ;
+ rdfs:isDefinedBy <https://w3id.org/stn/core> ;
                
                rdfs:label "Closed Message"@en ;
                
@@ -502,25 +449,20 @@ STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en .
                owl:disjointWith :OpenMessage ;
                
                rdfs:comment """unstable
-
 A closed message is a message with a fixed set of receivers. However, depending on the features offered by the hosting STN platform, a closed set of receivers may be modified by one of the agents already involved in the communication. Such is the case of a message thread on Facebook, where either the sender or one of the receivers may add new users to the message thread, or they may remove themselves from the message thread to stop receiving new replies."""@en .
 
-
-
 ###  https://w3id.org/stn/core#DataObject
-
 :DataObject rdf:type owl:Class ;
-            
+          rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+   
             rdfs:label "Data Object"@en ;
             
             rdfs:subClassOf :DigitalCounterpart .
 
-
-
 ###  https://w3id.org/stn/core#DigitalCounterpart
-
 :DigitalCounterpart rdf:type owl:Class ;
-                    
+         rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+            
                     rdfs:label "Digital Artifact"@en ;
                     
                     rdfs:subClassOf :Artifact ;
@@ -529,49 +471,38 @@ A closed message is a message with a fixed set of receivers. However, depending 
                                      :SpatialEntity ;
                     
                     rdfs:comment """Digital artifacts are virtual tools used by agents to participate in STNs. A digital artifact may be a digital counterpart of an abstract or physical entity, such as a digital counterpart of a physical place, or it may exist independently, such as an online message. Digital artifacts exist in the digital world and are hosted on STN platforms.
-
 An entity may have several digital counterparts, and a digital counterpart may have several digital representations. A user account is a kind of digital artifact."""@en .
 
-
-
 ###  https://w3id.org/stn/core#DigitalGroup
-
 :DigitalGroup rdf:type owl:Class ;
-              
+               rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
               rdfs:subClassOf :DigitalCounterpart .
-
-
 
 ###  https://w3id.org/stn/core#DigitalMessage
-
 :DigitalMessage rdf:type owl:Class ;
-                
+                 rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
                 rdfs:subClassOf :DigitalCounterpart .
 
-
-
 ###  https://w3id.org/stn/core#DigitalPlace
-
 :DigitalPlace rdf:type owl:Class ;
-              
+               rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
               rdfs:subClassOf :DigitalCounterpart .
 
-
-
 ###  https://w3id.org/stn/core#Feed
-
 :Feed rdf:type owl:Class ;
-      
+       rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
       rdfs:label "Feed"@en ;
       
       rdfs:subClassOf :DigitalCounterpart .
 
-
-
 ###  https://w3id.org/stn/core#Group
-
 :Group rdf:type owl:Class ;
-       
+        rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
        rdfs:label "Group"@en ;
        
        owl:disjointWith :Message ,
@@ -581,30 +512,24 @@ An entity may have several digital counterparts, and a digital counterpart may h
        
        rdfs:comment "A group is a collection of agents. A group is an abstract entity that may be associated with one or more digital artifacts, i.e. its digital counterparts. For instance, the AI-MAS research team of University \"Politehnica\" of Bucharest may be associated with a Facebook group and a LinkedIn group."@en .
 
-
-
 ###  https://w3id.org/stn/core#GroupFeed
-
 :GroupFeed rdf:type owl:Class ;
-           
+            rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
            rdfs:label "Group Feed"@en ;
            
            rdfs:subClassOf :Feed .
 
-
-
 ###  https://w3id.org/stn/core#LD-STNPlatform
-
 :LD-STNPlatform rdf:type owl:Class ;
-                
+                 rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
                 rdfs:subClassOf :STNPlatform .
 
-
-
 ###  https://w3id.org/stn/core#Message
-
 :Message rdf:type owl:Class ;
-         
+          rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
          rdfs:label "Message"@en ;
          
          rdfs:subClassOf :DigitalCounterpart ;
@@ -615,31 +540,24 @@ An entity may have several digital counterparts, and a digital counterpart may h
                           :UserAccount ;
          
          rdfs:comment """unstable
-
 A message is a piece of information transmitted by an agent, usually through the use of a user account, to a set of receivers. A message may be sent in reply to another message.
-
 A message is currently classified following 2 dichotomies: open vs. closed messages and shared vs. transmitted messages."""@en .
 
-
-
 ###  https://w3id.org/stn/core#OpenMessage
-
 :OpenMessage rdf:type owl:Class ;
-             
+              rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
              rdfs:label "Open Message"@en ;
              
              rdfs:subClassOf :Message ;
              
              rdfs:comment """unstable
-
 An open message is a message that has an open set of receivers, i.e. the set of receivers may evolve over time without the direct intervention of an agent. For instance, a message made available to anyone on the Web has an open set of receivers. Similarly, on many social platforms users may post a message that is made available, by default, to all (or a subset of) the users they are connected to. However, their connections may evolve over time, and new connected users may have access to older messages."""@en .
 
-
-
 ###  https://w3id.org/stn/core#Person
-
 :Person rdf:type owl:Class ;
-        
+         rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
         rdfs:label "Person"@en ;
         
         rdfs:subClassOf :Agent ,
@@ -651,22 +569,18 @@ An open message is a message that has an open set of receivers, i.e. the set of 
         
         rdfs:comment "Persons are human agents, they represent people. A person is also a spatial thing."@en .
 
-
-
 ###  https://w3id.org/stn/core#PhysicalArtifact
-
 :PhysicalArtifact rdf:type owl:Class ;
-                  
+                   rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
                   rdfs:label "Physical Artifact"@en ;
                   
                   rdfs:subClassOf :Artifact .
 
-
-
 ###  https://w3id.org/stn/core#PhysicalDigitalArtifact
-
 :PhysicalDigitalArtifact rdf:type owl:Class ;
-                         
+                          rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
                          rdfs:label "Physical-Digital Artifact"@en ;
                          
                          rdfs:subClassOf :DigitalCounterpart ,
@@ -674,36 +588,30 @@ An open message is a message that has an open set of receivers, i.e. the set of 
                          
                          owl:deprecated "true"^^xsd:boolean .
 
-
-
 ###  https://w3id.org/stn/core#Place
-
 :Place rdf:type owl:Class ;
-       
+        rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
        rdfs:label "Place"@en ;
        
        rdfs:subClassOf :SpatialEntity ;
        
        rdfs:comment "Places are all spatial things that are not persons (e.g. geographical regions, cities)."@en .
 
-
-
 ###  https://w3id.org/stn/core#Platform
-
 :Platform rdf:type owl:Class ;
-          
+           rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
           rdfs:label "Platform"@en ;
           
           owl:disjointWith :Role ;
           
           rdfs:comment "A platform is a system that provides a collection of features enabling agents to participate in an STN. Common features include creating and using user accounts, publishing social media content or interacting with other platform users."@en .
 
-
-
 ###  https://w3id.org/stn/core#Role
-
 :Role rdf:type owl:Class ;
-      
+       rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
       rdfs:label "Role"@en ;
       
       owl:disjointWith :SpatialEntity ;
@@ -712,22 +620,18 @@ An open message is a message that has an open set of receivers, i.e. the set of 
       
       rdfs:comment "A role is a function that may be enacted by an agent, within the scope of a group, platform, etc."@en .
 
-
-
 ###  https://w3id.org/stn/core#STNPlatform
-
 :STNPlatform rdf:type owl:Class ;
-             
+              rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
              rdfs:label "STN Platform"@en ;
              
              rdfs:subClassOf :Platform .
 
-
-
 ###  https://w3id.org/stn/core#SharedMessage
-
 :SharedMessage rdf:type owl:Class ;
-               
+                rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
                rdfs:label "Shared Message"@en ;
                
                rdfs:subClassOf :Message ;
@@ -735,15 +639,12 @@ An open message is a message that has an open set of receivers, i.e. the set of 
                owl:disjointWith :TransmittedMessage ;
                
                rdfs:comment """unstable
-
 A shared message is made available to a (possibly open) set of receivers, yet the sender of the message may decide at any time to stop sharing the message with some (or possibly all) of its receivers. For instance, a direct message sent on Twitter is actually a shared message, and the sender may decide to delete it at any time."""@en .
 
-
-
 ###  https://w3id.org/stn/core#SharedOpenMessage
-
 :SharedOpenMessage rdf:type owl:Class ;
-                   
+                    rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
                    rdfs:label "Shared Open Message"@en ;
                    
                    rdfs:subClassOf :OpenMessage ,
@@ -751,12 +652,10 @@ A shared message is made available to a (possibly open) set of receivers, yet th
                    
                    rdfs:comment "unstable"@en .
 
-
-
 ###  https://w3id.org/stn/core#SmartPlace
-
 :SmartPlace rdf:type owl:Class ;
-            
+             rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
             rdfs:label "Smart Place"@en ;
             
             rdfs:subClassOf :Place ,
@@ -764,34 +663,28 @@ A shared message is made available to a (possibly open) set of receivers, yet th
             
             rdfs:comment "A smart place is a smart thing which is also a place. Most commonly, physical things (e.g. table, room, backyard) fall into this category."@en .
 
-
-
 ###  https://w3id.org/stn/core#SmartThing
-
 :SmartThing rdf:type owl:Class ;
-            
+             rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
             rdfs:label "Social Thing"@en ;
             
             rdfs:subClassOf :Agent ;
             
             rdfs:comment "A social thing is an agent that most commonly embeds the logics of a given physical or virtual object, although it may also represent a composite application (e.g. one built on top of several other smart things)."@en .
 
-
-
 ###  https://w3id.org/stn/core#SpatialEntity
-
 :SpatialEntity rdf:type owl:Class ;
-               
+                rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
                rdfs:label "Spatial Entity"@en ;
                
                rdfs:comment "A spatial thing is an entity with spatial characteristics (e.g. position, surface)."@en .
 
-
-
 ###  https://w3id.org/stn/core#TransmittedClosedMessage
-
 :TransmittedClosedMessage rdf:type owl:Class ;
-                          
+                           rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
                           rdfs:label "Transmitted Closed Message"@en ;
                           
                           rdfs:subClassOf :ClosedMessage ,
@@ -799,44 +692,34 @@ A shared message is made available to a (possibly open) set of receivers, yet th
                           
                           rdfs:comment "unstable"@en .
 
-
-
 ###  https://w3id.org/stn/core#TransmittedMessage
-
 :TransmittedMessage rdf:type owl:Class ;
-                    
+                 rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+    
                     rdfs:label "Transmitted Message"@en ;
                     
                     rdfs:subClassOf :Message ;
                     
                     rdfs:comment """unstable
-
 When a message is transmitted, an actual copy of the message is received and owned by the receiver. Such is the case of a private message sent on Facebook."""@en .
 
-
-
 ###  https://w3id.org/stn/core#UserAccount
-
 :UserAccount rdf:type owl:Class ;
-             
+              rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+
              rdfs:label "User Account"@en ;
              
              rdfs:subClassOf :DigitalCounterpart ;
              
              rdfs:comment "A user account is the digital counterpart of an agent within the scope of a platform. An agent may hold multiple user accounts, usually on different platforms. A user account may be anonymous."@en .
 
-
-
 ###  https://w3id.org/stn/core#UserAccountFeed
-
 :UserAccountFeed rdf:type owl:Class ;
-                 
+               rdfs:isDefinedBy <https://w3id.org/stn/core> ;
+   
                  rdfs:label "User Account Feed"@en ;
                  
                  rdfs:subClassOf :Feed .
-
-
-
 
 
 #################################################################
@@ -844,7 +727,6 @@ When a message is transmitted, an actual copy of the message is received and own
 #    General axioms
 #
 #################################################################
-
 
 [ rdf:type owl:AllDisjointClasses ;
   owl:members ( :AggregatedFeed
@@ -854,7 +736,4 @@ When a message is transmitted, an actual copy of the message is received and own
 ] .
 
 
-
-
 ###  Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net
-

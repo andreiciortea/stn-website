@@ -1,17 +1,30 @@
-#  Copyright 2016 Ecole des Mines de Saint-Etienne.
-# 
-#  Licensed under the Apache License, Version 2.0 (the "License");
-#  you may not use this file except in compliance with the License.
-#  You may obtain a copy of the License at
-# 
-#       http://www.apache.org/licenses/LICENSE-2.0
-# 
-#  Unless required by applicable law or agreed to in writing, software
-#  distributed under the License is distributed on an "AS IS" BASIS,
-#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-#  See the License for the specific language governing permissions and
-#  limitations under the License.
- 
+# Copyright 2016 Ecole des Mines de Saint-Etienne.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix cc: <http://creativecommons.org/ns#>.
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix void: <https://www.w3.org/TR/void/>.
+@prefix cc: <http://creativecommons.org/ns#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
 @prefix : <https://w3id.org/stn/core/operations#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -20,18 +33,25 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @base <https://w3id.org/stn/core/operations> .
 
-<https://w3id.org/stn/core/operations> rdf:type owl:Ontology , foaf:Document ;
+<https://w3id.org/stn/core/operations> rdf:type owl:Ontology , foaf:Document , voaf:Vocabulary;
                                        
-                                       rdfs:label "STN-Operations"@en ;
+                                       dc:title "STN-Operations"@en ;
                                        
-                                       rdfs:comment """Socio-technical networks (STNs) are networks of people and social things (i.e. autonomous physical or virtual objects). An STN mirrors the physical world by creating digital counterparts of physical and abstract entities and relating them to one another. In the same time, applications running in the digital world may reflect back into the physical world (e.g. through actuators).
+                                       dc:description """Socio-technical networks (STNs) are networks of people and social things (i.e. autonomous physical or virtual objects). An STN mirrors the physical world by creating digital counterparts of physical and abstract entities and relating them to one another. In the same time, applications running in the digital world may reflect back into the physical world (e.g. through actuators).
 
 An STN encodes the different relations among people and smart things, such as friendship, ownership, provenance or colocation. An STN may not exist outside of the minds of its members, however, in most cases, an STN is reified within an STN platform.
 
 STN-Operations defines the set of generic operations and parameters that allow agents to participate in any STN platform compatible with STN-Core."""@en ;
                                        
-                                       owl:imports <https://w3id.org/stn/core> .
-
+                                       owl:imports <https://w3id.org/stn/core> ;
+  dc:issued "2016-09-09"^^xsd:date ;
+  dc:modified "2016-09-12"^^xsd:date ;
+  dc:author [ foaf:name "Andrei Ciortea" ] ;
+  cc:license <https://creativecommons.org/licenses/by/4.0> ;
+  vann:preferredNamespacePrefix "stnop" ;
+  vann:preferredNamespaceUri <https://w3id.org/stn/core/operations#> ; 
+  owl:versionIRI <https://w3id.org/stn/core/operations-1.0> ;
+  owl:versionInfo "v1.0" .
 
 #################################################################
 #
@@ -42,7 +62,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#consumes
 
-:consumes rdf:type owl:ObjectProperty ;
+:consumes rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
           
           rdfs:domain <https://w3id.org/stn/core#Platform> ;
           
@@ -52,7 +73,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#contains
 
-:contains rdf:type owl:ObjectProperty ;
+:contains rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
           
           rdfs:range :KeyValuePair ;
           
@@ -62,7 +84,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#hasClass
 
-:hasClass rdf:type owl:ObjectProperty ;
+:hasClass rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
           
           rdfs:domain <https://w3id.org/stn/core#SmartThing> ;
           
@@ -72,7 +95,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#hasFormat
 
-:hasFormat rdf:type owl:ObjectProperty ;
+:hasFormat rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
            
            rdfs:domain :Representation ;
            
@@ -82,7 +106,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#hasInput
 
-:hasInput rdf:type owl:ObjectProperty ;
+:hasInput rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
           
           rdfs:label "has input"@en ;
           
@@ -96,7 +121,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#hasOutput
 
-:hasOutput rdf:type owl:ObjectProperty ;
+:hasOutput rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
            
            rdfs:label "has output"@en ;
            
@@ -116,7 +142,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#hasRepresentation
 
-:hasRepresentation rdf:type owl:ObjectProperty ;
+:hasRepresentation rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                    
                    rdfs:label "has representation"@en ;
                    
@@ -128,7 +155,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#hasRequiredInput
 
-:hasRequiredInput rdf:type owl:ObjectProperty ;
+:hasRequiredInput rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                   
                   rdfs:label "has required input"@en .
 
@@ -136,7 +164,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#implementedAs
 
-:implementedAs rdf:type owl:ObjectProperty ;
+:implementedAs rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                
                rdfs:label "implemented as"@en ;
                
@@ -150,7 +179,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#key
 
-:key rdf:type owl:ObjectProperty ;
+:key rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
      
      rdfs:domain :KeyValuePair .
 
@@ -159,7 +189,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 ###  https://w3id.org/stn/core/operations#performed
 
 :performed rdf:type owl:InverseFunctionalProperty ,
-                    owl:ObjectProperty ;
+                    owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
            
            rdfs:label "performed"@en ;
            
@@ -176,7 +207,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 ###  https://w3id.org/stn/core/operations#performedBy
 
 :performedBy rdf:type owl:FunctionalProperty ,
-                      owl:ObjectProperty ;
+                      owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
              
              rdfs:label "performedBy"@en ;
              
@@ -190,7 +222,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#produces
 
-:produces rdf:type owl:ObjectProperty ;
+:produces rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
           
           rdfs:domain <https://w3id.org/stn/core#Platform> ;
           
@@ -200,7 +233,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#representationOf
 
-:representationOf rdf:type owl:ObjectProperty ;
+:representationOf rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                   
                   rdfs:label "representation of"@en ;
                   
@@ -210,7 +244,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#supports
 
-:supports rdf:type owl:ObjectProperty ;
+:supports rdf:type owl:ObjectProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
           
           rdfs:domain <https://w3id.org/stn/core#Platform> ;
           
@@ -231,7 +266,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 :paramName rdf:type owl:DatatypeProperty ,
                     owl:FunctionalProperty ;
-           
+            rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
+
            rdfs:label "Parameter Name"@en ;
            
            owl:deprecated "true"^^xsd:boolean ;
@@ -246,7 +282,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#required
 
-:required rdf:type owl:DatatypeProperty ;
+:required rdf:type owl:DatatypeProperty ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
           
           rdfs:range xsd:boolean ;
           
@@ -265,7 +302,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#AcceptConnection
 
-:AcceptConnection rdf:type owl:Class ;
+:AcceptConnection rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                   
                   rdfs:label "Accept Connection"@en ;
                   
@@ -277,7 +315,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#Action
 
-:Action rdf:type owl:Class ;
+:Action rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
         
         rdfs:label "Action"@en ;
         
@@ -291,7 +330,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#AddOwner
 
-:AddOwner rdf:type owl:Class ;
+:AddOwner rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
           
           rdfs:label "Add Owner"@en ;
           
@@ -305,7 +345,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#AddPossession
 
-:AddPossession rdf:type owl:Class ;
+:AddPossession rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                
                rdfs:label "Add Possession"@en ;
                
@@ -317,7 +358,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#CheckIn
 
-:CheckIn rdf:type owl:Class ;
+:CheckIn rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
          
          rdfs:label "Check In"@en ;
          
@@ -331,7 +373,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#CheckOut
 
-:CheckOut rdf:type owl:Class ;
+:CheckOut rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
           
           rdfs:label "Check Out"@en ;
           
@@ -343,7 +386,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#CommunicationAction
 
-:CommunicationAction rdf:type owl:Class ;
+:CommunicationAction rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                      
                      rdfs:label "Communication Action"@en ;
                      
@@ -355,7 +399,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#ConnectionAction
 
-:ConnectionAction rdf:type owl:Class ;
+:ConnectionAction rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                   
                   rdfs:label "Connection Action"@en ;
                   
@@ -367,7 +412,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#CreateConnection
 
-:CreateConnection rdf:type owl:Class ;
+:CreateConnection rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                   
                   rdfs:label "Create Connection"@en ;
                   
@@ -379,7 +425,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#CreateConnectionRequest
 
-:CreateConnectionRequest rdf:type owl:Class ;
+:CreateConnectionRequest rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                          
                          rdfs:label "Create Connection Request"@en ;
                          
@@ -394,7 +441,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#CreateGroup
 
-:CreateGroup rdf:type owl:Class ;
+:CreateGroup rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
              
              rdfs:label "Create Group"@en ;
              
@@ -406,7 +454,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#CreateMessage
 
-:CreateMessage rdf:type owl:Class ;
+:CreateMessage rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                
                rdfs:label "Create Message"@en ;
                
@@ -416,7 +465,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#CreatePlace
 
-:CreatePlace rdf:type owl:Class ;
+:CreatePlace rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
              
              rdfs:label "Create Place"@en ;
              
@@ -428,7 +478,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#CreateUserAccount
 
-:CreateUserAccount rdf:type owl:Class ;
+:CreateUserAccount rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                    
                    rdfs:label "Create User Account"@en ;
                    
@@ -440,7 +491,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#DataAction
 
-:DataAction rdf:type owl:Class ;
+:DataAction rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
             
             rdfs:label "Data Action"@en ;
             
@@ -450,7 +502,8 @@ STN-Operations defines the set of generic operations and parameters that allow a
 
 ###  https://w3id.org/stn/core/operations#DelayedAction
 
-:DelayedAction rdf:type owl:Class ;
+:DelayedAction rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                
                rdfs:label "Delayed Action"@en ;
                
@@ -464,7 +517,8 @@ A delayed action is an action which does not have an immediate effect and requir
 
 ###  https://w3id.org/stn/core/operations#DeleteConnectionFrom
 
-:DeleteConnectionFrom rdf:type owl:Class ;
+:DeleteConnectionFrom rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                       
                       rdfs:label "Delete Connection From"@en ;
                       
@@ -478,7 +532,8 @@ A kind of action an agent may perform in order to delete a connection from an en
 
 ###  https://w3id.org/stn/core/operations#DeleteConnectionFromRequest
 
-:DeleteConnectionFromRequest rdf:type owl:Class ;
+:DeleteConnectionFromRequest rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                              
                              rdfs:label "Delete Connection From Request"@en ;
                              
@@ -495,7 +550,8 @@ A delayed action an agent may perform in order to delete a connection from anoth
 
 ###  https://w3id.org/stn/core/operations#DeleteConnectionTo
 
-:DeleteConnectionTo rdf:type owl:Class ;
+:DeleteConnectionTo rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                     
                     rdfs:label "Delete Connection To"@en ;
                     
@@ -509,7 +565,8 @@ A kind of action an agent may perform in order to delete a connection to an enti
 
 ###  https://w3id.org/stn/core/operations#DeleteConnectionToRequest
 
-:DeleteConnectionToRequest rdf:type owl:Class ;
+:DeleteConnectionToRequest rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                            
                            rdfs:label "Delete Connection To Request"@en ;
                            
@@ -526,7 +583,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#DeleteGroup
 
-:DeleteGroup rdf:type owl:Class ;
+:DeleteGroup rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
              
              rdfs:label "Delete Group"@en ;
              
@@ -538,7 +596,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#DeleteMessage
 
-:DeleteMessage rdf:type owl:Class ;
+:DeleteMessage rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                
                rdfs:label "Delete Message"@en ;
                
@@ -548,7 +607,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#DeletePlace
 
-:DeletePlace rdf:type owl:Class ;
+:DeletePlace rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
              
              rdfs:label "Delete Place"@en ;
              
@@ -560,7 +620,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#DeleteUserAccount
 
-:DeleteUserAccount rdf:type owl:Class ;
+:DeleteUserAccount rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                    
                    rdfs:label "Delete User Account"@en ;
                    
@@ -572,7 +633,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#Description
 
-:Description rdf:type owl:Class ;
+:Description rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
              
              rdfs:label "Description"@en ;
              
@@ -584,7 +646,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#DisplayedName
 
-:DisplayedName rdf:type owl:Class ;
+:DisplayedName rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                
                rdfs:label "Displayed Name"@en ;
                
@@ -596,7 +659,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#EnactRole
 
-:EnactRole rdf:type owl:Class ;
+:EnactRole rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
            
            rdfs:label "Enact Role"@en ;
            
@@ -610,7 +674,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#EntityID
 
-:EntityID rdf:type owl:Class ;
+:EntityID rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
           
           rdfs:label "Entity ID"@en ;
           
@@ -622,7 +687,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#GetAggregatedFeed
 
-:GetAggregatedFeed rdf:type owl:Class ;
+:GetAggregatedFeed rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                    
                    rdfs:label "Get Aggregated Feed"@en ;
                    
@@ -632,7 +698,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#GetConnections
 
-:GetConnections rdf:type owl:Class ;
+:GetConnections rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                 
                 rdfs:label "Get Connections"@en ;
                 
@@ -642,7 +709,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#GetConnectionsFrom
 
-:GetConnectionsFrom rdf:type owl:Class ;
+:GetConnectionsFrom rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                     
                     rdfs:label "Get Connections From"@en ;
                     
@@ -652,7 +720,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#GetConnectionsTo
 
-:GetConnectionsTo rdf:type owl:Class ;
+:GetConnectionsTo rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                   
                   rdfs:label "Get Connections To"@en ;
                   
@@ -662,7 +731,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#GetDescription
 
-:GetDescription rdf:type owl:Class ;
+:GetDescription rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                 
                 rdfs:label "Get Description"@en ;
                 
@@ -676,7 +746,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#GetFeed
 
-:GetFeed rdf:type owl:Class ;
+:GetFeed rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
          
          rdfs:label "Get Feed"@en ;
          
@@ -686,7 +757,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#GetGroup
 
-:GetGroup rdf:type owl:Class ;
+:GetGroup rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
           
           rdfs:label "Get Group"@en ;
           
@@ -696,7 +768,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#GetGroupFeed
 
-:GetGroupFeed rdf:type owl:Class ;
+:GetGroupFeed rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
               
               rdfs:label "Get Group Feed"@en ;
               
@@ -706,7 +779,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#GetGroups
 
-:GetGroups rdf:type owl:Class ;
+:GetGroups rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
            
            rdfs:label "Get Groups"@en ;
            
@@ -716,7 +790,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#GetGroupsOfUser
 
-:GetGroupsOfUser rdf:type owl:Class ;
+:GetGroupsOfUser rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                  
                  rdfs:label "Get Groups Of User"@en ;
                  
@@ -726,7 +801,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#GetMessages
 
-:GetMessages rdf:type owl:Class ;
+:GetMessages rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
              
              rdfs:label "Get Messages"@en ;
              
@@ -736,7 +812,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#GetReceivedMessages
 
-:GetReceivedMessages rdf:type owl:Class ;
+:GetReceivedMessages rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                      
                      rdfs:label "Get Received Messages"@en ;
                      
@@ -746,7 +823,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#GetSentMessages
 
-:GetSentMessages rdf:type owl:Class ;
+:GetSentMessages rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                  
                  rdfs:label "Get Sent Messages"@en ;
                  
@@ -756,7 +834,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#GetUserAccountFeed
 
-:GetUserAccountFeed rdf:type owl:Class ;
+:GetUserAccountFeed rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                     
                     rdfs:label "Get User Account Feed"@en ;
                     
@@ -766,7 +845,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#GetUserConnections
 
-:GetUserConnections rdf:type owl:Class ;
+:GetUserConnections rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                     
                     rdfs:label "Get User Connections"@en ;
                     
@@ -778,7 +858,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#GroupAction
 
-:GroupAction rdf:type owl:Class ;
+:GroupAction rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
              
              rdfs:label "Group Action"@en ;
              
@@ -790,7 +871,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#Implementation
 
-:Implementation rdf:type owl:Class ;
+:Implementation rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                 
                 rdfs:label "Implementation"@en ;
                 
@@ -800,7 +882,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#JoinGroup
 
-:JoinGroup rdf:type owl:Class ;
+:JoinGroup rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
            
            rdfs:label "Join Group"@en ;
            
@@ -812,7 +895,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#KeyValuePair
 
-:KeyValuePair rdf:type owl:Class ;
+:KeyValuePair rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
               
               rdfs:label "KeyValuePair"@en ;
               
@@ -826,7 +910,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#LeaveGroup
 
-:LeaveGroup rdf:type owl:Class ;
+:LeaveGroup rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
             
             rdfs:label "Leave Group"@en ;
             
@@ -838,7 +923,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#LeaveRole
 
-:LeaveRole rdf:type owl:Class ;
+:LeaveRole rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
            
            rdfs:label "Leave Role"@en ;
            
@@ -850,7 +936,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#MessageAction
 
-:MessageAction rdf:type owl:Class ;
+:MessageAction rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                
                rdfs:label "Message Action"@en ;
                
@@ -860,7 +947,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#Operation
 
-:Operation rdf:type owl:Class ;
+:Operation rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
            
            rdfs:label "Operation"@en ;
            
@@ -870,7 +958,8 @@ A delayed action an agent may perform in order to delete a connection to another
 
 ###  https://w3id.org/stn/core/operations#OwnerID
 
-:OwnerID rdf:type owl:Class ;
+:OwnerID rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
          
          rdfs:label "Owner ID"@en ;
          
@@ -890,7 +979,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#PostMessage
 
-:PostMessage rdf:type owl:Class ;
+:PostMessage rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
              
              rdfs:label "Post Message"@en ;
              
@@ -903,7 +993,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#PostMessageToGroup
 
-:PostMessageToGroup rdf:type owl:Class ;
+:PostMessageToGroup rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                     
                     rdfs:label "Post Message To Group"@en ;
                     
@@ -913,7 +1004,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#Query
 
-:Query rdf:type owl:Class ;
+:Query rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
        
        rdfs:label "Query"@en ;
        
@@ -925,7 +1017,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#RawData
 
-:RawData rdf:type owl:Class ;
+:RawData rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
          
          rdfs:label "Raw Data"@en ;
          
@@ -935,7 +1028,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#ReadDataObject
 
-:ReadDataObject rdf:type owl:Class ;
+:ReadDataObject rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                 
                 rdfs:label "Read Data Object"@en ;
                 
@@ -947,7 +1041,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#ReadKeyValuePair
 
-:ReadKeyValuePair rdf:type owl:Class ;
+:ReadKeyValuePair rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                   
                   rdfs:label "Read Key Value Pair"@en ;
                   
@@ -957,7 +1052,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#ReadTriple
 
-:ReadTriple rdf:type owl:Class ;
+:ReadTriple rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
             
             rdfs:label "Read Triple"@en ;
             
@@ -967,7 +1063,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#ReassignToRole
 
-:ReassignToRole rdf:type owl:Class ;
+:ReassignToRole rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                 
                 rdfs:subClassOf :GroupAction ;
                 
@@ -979,7 +1076,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#RejectConnection
 
-:RejectConnection rdf:type owl:Class ;
+:RejectConnection rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                   
                   rdfs:label "Reject Connection"@en ;
                   
@@ -991,7 +1089,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#Representation
 
-:Representation rdf:type owl:Class ;
+:Representation rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                 
                 rdfs:label "Representation"@en ;
                 
@@ -1001,7 +1100,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#RepresentationFormat
 
-:RepresentationFormat rdf:type owl:Class ;
+:RepresentationFormat rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                       
                       rdfs:label "Representation Format"@en .
 
@@ -1009,7 +1109,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#RoleAction
 
-:RoleAction rdf:type owl:Class ;
+:RoleAction rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
             
             rdfs:label "Role Action"@en ;
             
@@ -1021,7 +1122,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#SendMessage
 
-:SendMessage rdf:type owl:Class ;
+:SendMessage rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
              
              rdfs:label "Send Message"@en ;
              
@@ -1033,7 +1135,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#SendMessageToGroup
 
-:SendMessageToGroup rdf:type owl:Class ;
+:SendMessageToGroup rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                     
                     rdfs:label "Send Message to Group"@en ;
                     
@@ -1043,7 +1146,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#SharePrivateMessage
 
-:SharePrivateMessage rdf:type owl:Class ;
+:SharePrivateMessage rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                      
                      rdfs:label "Share Private Message"@en ;
                      
@@ -1056,7 +1160,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#SocialThingClass
 
-:SocialThingClass rdf:type owl:Class ;
+:SocialThingClass rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                   
                   rdfs:subClassOf :KeyValuePair .
 
@@ -1064,7 +1169,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#SpatialAction
 
-:SpatialAction rdf:type owl:Class ;
+:SpatialAction rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                
                rdfs:label "Spatial Action"@en ;
                
@@ -1076,7 +1182,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#SpatialThingID
 
-:SpatialThingID rdf:type owl:Class ;
+:SpatialThingID rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                 
                 rdfs:label "Spatial Thing ID"@en ;
                 
@@ -1088,7 +1195,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#UpdateGroup
 
-:UpdateGroup rdf:type owl:Class ;
+:UpdateGroup rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
              
              rdfs:label "Update Group"@en ;
              
@@ -1100,7 +1208,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#UpdatePlace
 
-:UpdatePlace rdf:type owl:Class ;
+:UpdatePlace rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
              
              rdfs:label "Update Place"@en ;
              
@@ -1112,7 +1221,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#UpdateUserAccount
 
-:UpdateUserAccount rdf:type owl:Class ;
+:UpdateUserAccount rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                    
                    rdfs:label "Update User Account"@en ;
                    
@@ -1124,7 +1234,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#UserAccountAction
 
-:UserAccountAction rdf:type owl:Class ;
+:UserAccountAction rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                    
                    rdfs:label "User Account Action"@en ;
                    
@@ -1136,7 +1247,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#UserID
 
-:UserID rdf:type owl:Class ;
+:UserID rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
         
         rdfs:label "User ID"@en ;
         
@@ -1148,7 +1260,8 @@ A parameter which represents the ID of a smart thing's owner, such as the ID of 
 
 ###  https://w3id.org/stn/core/operations#WriteDataObject
 
-:WriteDataObject rdf:type owl:Class ;
+:WriteDataObject rdf:type owl:Class ; 
+ rdfs:isDefinedBy <https://w3id.org/stn/core/operations> ;
                  
                  rdfs:label "Write Data Object"@en ;
                  

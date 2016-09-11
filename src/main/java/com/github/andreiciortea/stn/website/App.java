@@ -16,13 +16,20 @@
 package com.github.andreiciortea.stn.website;
 
 import com.github.thesmartenergy.rdfp.BaseURI;
+import com.github.thesmartenergy.rdfp.DevelopmentBaseURI;
 import javax.enterprise.inject.Produces;
 
 public class App {
     
+    
+    static final boolean DEV = false;
+            
     @Produces
     @BaseURI
-    public String getBase() { 
-        return "https://w3id.org/stn/";
-    }
+    static final String BASE = "https://w3id.org/stn/"; 
+    
+    @Produces
+    @DevelopmentBaseURI
+    static final String DEV_BASE = DEV ? "http://localhost:8080/stn/" : BASE; 
+    
 }
