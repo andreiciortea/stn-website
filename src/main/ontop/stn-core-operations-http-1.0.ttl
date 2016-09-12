@@ -239,7 +239,6 @@ STN-Operations-HTTP provides the concepts and properties required for performin 
 ###  https://w3id.org/stn/core/operations/http#STNRequest
 
 :STNRequest rdf:type owl:Class ; 
- rdfs:isDefinedBy <https://w3id.org/stn/core/operations/http> ;
             
             rdfs:subClassOf <https://w3id.org/stn/core/operations#Implementation> ,
                             <http://www.w3.org/2011/http#Request> ;
@@ -259,8 +258,7 @@ STN-Operations-HTTP provides the concepts and properties required for performin 
 
 ###  http://www.w3.org/2011/http#Request
 
-<http://www.w3.org/2011/http#Request> rdf:type owl:Class ;
- rdfs:isDefinedBy <https://w3id.org/stn/core/operations/http> .
+<http://www.w3.org/2011/http#Request> rdf:type owl:Class .
 
 
 
