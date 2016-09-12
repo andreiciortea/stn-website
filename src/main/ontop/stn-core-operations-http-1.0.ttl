@@ -48,7 +48,7 @@ STN-Operations-HTTP provides the concepts and properties required for performin 
                                                        <http://www.w3.org/2011/http> ;
   dc:issued "2016-09-09"^^xsd:date ;
   dc:modified "2016-09-12"^^xsd:date ;
-  dc:author [ foaf:name "Andrei Ciortea" ] ;
+  dc:creator [ foaf:name "Andrei Ciortea" ] ;
   cc:license <https://creativecommons.org/licenses/by/4.0> ;
   vann:preferredNamespacePrefix "stnophttp" ;
   vann:preferredNamespaceUri <https://w3id.org/stn/core/operations/http#> ; 

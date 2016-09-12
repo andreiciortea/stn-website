@@ -43,7 +43,7 @@ STN-Operations: https://w3id.org/core/operations
 STN-Operations-HTTP: https://w3id.org/core/operations/http"""@en ;
   dc:issued "2016-09-09"^^xsd:date ;
   dc:modified "2016-09-12"^^xsd:date ;
-  dc:author [ foaf:name "Andrei Ciortea" ] ;
+  dc:creator [ foaf:name "Andrei Ciortea" ] ;
   cc:license <https://creativecommons.org/licenses/by/4.0> ;
   vann:preferredNamespacePrefix "stn" ;
   vann:preferredNamespaceUri <https://w3id.org/stn/core#> ; 

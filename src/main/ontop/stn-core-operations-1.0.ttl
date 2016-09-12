@@ -46,7 +46,7 @@ STN-Operations defines the set of generic operations and parameters that allow a
                                        owl:imports <https://w3id.org/stn/core> ;
   dc:issued "2016-09-09"^^xsd:date ;
   dc:modified "2016-09-12"^^xsd:date ;
-  dc:author [ foaf:name "Andrei Ciortea" ] ;
+  dc:creator [ foaf:name "Andrei Ciortea" ] ;
   cc:license <https://creativecommons.org/licenses/by/4.0> ;
   vann:preferredNamespacePrefix "stnop" ;
   vann:preferredNamespaceUri <https://w3id.org/stn/core/operations#> ; 
