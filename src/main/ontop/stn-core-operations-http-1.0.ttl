@@ -49,7 +49,7 @@ STN-Operations-HTTP provides the concepts and properties required for performin 
   dc:issued "2016-09-09"^^xsd:date ;
   dc:modified "2016-09-12"^^xsd:date ;
   dc:creator [ foaf:name "Andrei Ciortea" ] ;
-  cc:license <https://creativecommons.org/licenses/by/4.0> ;
+  cc:license <https://www.apache.org/licenses/LICENSE-2.0> ;
   vann:preferredNamespacePrefix "stnophttp" ;
   vann:preferredNamespaceUri <https://w3id.org/stn/core/operations/http#> ; 
   owl:versionIRI <https://w3id.org/stn/core/operations/http-1.0> ;
