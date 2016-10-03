@@ -1,11 +1,11 @@
-# The STN Website
+# The STN Ontology 
 
-This website exposes the SNT ontologies.
+This website presents the STN ontology (to be updated shortly).
 
 See:
 
-- [The core ontology](core)
-- [The core/operations ontology](core/operations)
-- [The core/operations/http ontology](core/operations/http)
+- [STN-Core](core)
+- [STN-Operations](core/operations)
+- [STN-HTTP](core/operations/http)
 - [The code of this web application.](https://github.com/andreiciortea/stn-website)
 
