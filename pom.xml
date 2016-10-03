@@ -70,7 +70,7 @@
         <repository.user>andreiciortea</repository.user>
         <repository.name>stn-website</repository.name>
         
-        <ontop.version>1.1-SNAPSHOT</ontop.version>
+        <ontop.version>1.2-SNAPSHOT</ontop.version>
     </properties>
     
     <dependencyManagement>
